@@ -2,7 +2,7 @@
 PHP_VERSION ?= 8.3
 IMAGE_NAME ?= php-local
 
-.PHONY: help build install switch check install-composer
+.PHONY: help build install switch check
 
 build:
 	@echo "🔨 Building PHP $(PHP_VERSION) Docker image..."
