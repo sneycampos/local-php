@@ -68,6 +68,8 @@ switch:
 	@echo "✅ PHP version switched to $(PHP_VERSION)"
 	@php -v | head -n 1
 
+	# Run Composer installation
+	@make install-composer PHP_VERSION=$(PHP_VERSION)
 check:
 	@echo "🔍 Checking system prerequisites and installation..."
 
