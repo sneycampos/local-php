@@ -57,7 +57,7 @@ switch:
 		exit 1; \
 	fi
 
-	@# Check if the specified version binary exists
+	# Check if the specified version binary exists
 	@if [ ! -f "/usr/local/bin/php$(PHP_VERSION)" ]; then \
 		echo "❌ Error: PHP $(PHP_VERSION) is not installed. Run 'sudo make install PHP_VERSION=$(PHP_VERSION)' first."; \
 		exit 1; \
@@ -71,7 +71,7 @@ switch:
 check:
 	@echo "🔍 Checking system prerequisites and installation..."
 
-	@# Check if Docker is installed and running
+	# Check if Docker is installed and running
 	@if ! command -v docker >/dev/null 2>&1; then \
 		echo "❌ Docker is not installed"; \
 		exit 1; \
@@ -79,7 +79,7 @@ check:
 		echo "✅ Docker is installed"; \
 	fi
 
-	@# Check if Docker daemon is running
+	# Check if Docker daemon is running
 	@if ! docker info >/dev/null 2>&1; then \
 		echo "❌ Docker daemon is not running"; \
 		exit 1; \
@@ -87,7 +87,7 @@ check:
 		echo "✅ Docker daemon is running"; \
 	fi
 
-	@# Check if the Docker image exists
+	# Check if the Docker image exists
 	@if ! docker image inspect $(IMAGE_NAME):$(PHP_VERSION) >/dev/null 2>&1; then \
 		echo "❌ Docker image $(IMAGE_NAME):$(PHP_VERSION) not found. Run 'make build' first"; \
 		exit 1; \
@@ -95,7 +95,7 @@ check:
 		echo "✅ Docker image $(IMAGE_NAME):$(PHP_VERSION) exists"; \
 	fi
 
-	@# Check if PHP binary exists and is executable
+	# Check if PHP binary exists and is executable
 	@if [ ! -x "/usr/local/bin/php" ]; then \
 		echo "❌ PHP binary not found or not executable. Run 'sudo make install' first"; \
 		exit 1; \
@@ -103,7 +103,7 @@ check:
 		echo "✅ PHP binary exists and is executable"; \
 	fi
 
-	@# Check if Composer binary exists and is executable
+	# Check if Composer binary exists and is executable
 	@if [ ! -x "/usr/local/bin/composer" ]; then \
 		echo "❌ Composer binary not found or not executable"; \
 		exit 1; \
@@ -111,7 +111,7 @@ check:
 		echo "✅ Composer binary exists and is executable"; \
 	fi
 
-	@# Try to run PHP version check
+	# Try to run PHP version check
 	@echo "\n📋 Testing PHP installation..."
 	@if ! php -v >/dev/null 2>&1; then \
 		echo "❌ PHP installation test failed"; \
@@ -120,7 +120,7 @@ check:
 		echo "✅ PHP is working correctly ($(shell php -r 'echo PHP_VERSION;'))"; \
 	fi
 
-	@# Try to run Composer version check
+	# Try to run Composer version check
 	@echo "\n📋 Testing Composer installation..."
 	@if ! composer -V >/dev/null 2>&1; then \
 		echo "❌ Composer installation test failed"; \
