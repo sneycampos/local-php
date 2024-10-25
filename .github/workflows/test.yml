@@ -37,7 +37,7 @@ jobs:
         run: sudo make install PHP_VERSION=${{ matrix.php-version }}
 
       - name: Run make check (post-install)
-        run: make check
+        run: make check PHP_VERSION=${{ matrix.php-version }}
 
       - name: Verify PHP Installation
         run: |
