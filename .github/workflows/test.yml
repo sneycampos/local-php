@@ -5,11 +5,10 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-  workflow_dispatch:
 
 jobs:
   test:
-    name: Test Makefile on ${{ matrix.os }}
+    name: Test Makefile on ${{ matrix.os }} - PHP ${{ matrix.php-version }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -62,10 +61,7 @@ jobs:
               exit 1
           fi
       - name: Test Composer
-        working-directory: ${{ github.workspace }}
         run: |
-          mkdir -p test-composer
-          cd test-composer
           composer init \
             --name=test/project \
             --description="Test project" \
