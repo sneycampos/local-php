@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    name: Test Makefile on ${{ matrix.os }} - PHP ${{ matrix.php-version }}
+    name: ${{ matrix.os }} - PHP ${{ matrix.php-version }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
